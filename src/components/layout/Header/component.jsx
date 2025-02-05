@@ -1,6 +1,11 @@
 import styled from "kotii-styled";
 import React from "react";
 import { TfiGithub } from "react-icons/tfi/index.js";
+
+import { BiCart } from "react-icons/bi/index.js";
+import { BiUserPlus } from "react-icons/bi/index.js";
+import { BiSearch } from "react-icons/bi/index.js";
+import { BiHeart } from "react-icons/bi/index.js";
 import { Link } from "wouter";
 import { Brand } from "../shared/index.jsx";
 
@@ -22,7 +27,9 @@ const HeaderCart = styled("div")(() => {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 25,
+    gap: 15,
+    paddingRight: "5%"
+    
   };
 });
 
@@ -31,7 +38,7 @@ const HeaderShop = styled("div")(() => {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
-    gap: 25,
+    gap: 50,
   };
 });
 
@@ -48,22 +55,25 @@ const AppHeader = () => {
         {/* <Link href="https://github.com/ntsakosurprise/kotii" target={"_blank"}>
           <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
         </Link> */}
-        <StyledLink href="/faqs">Faqs</StyledLink>
-        <StyledLink href="/connection">Connection</StyledLink>
+        <StyledLink href="/">Hoe</StyledLink>
+        <StyledLink href="/shop">Shop</StyledLink>
         <StyledLink href="/about">About</StyledLink>
-        <StyledLink href="/todo">Todo</StyledLink>
-        <StyledLink href="/privacy">
-          <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
-        </StyledLink>
+        <StyledLink href="/contact">Contact</StyledLink>
+        
       </HeaderShop>
 
       <HeaderCart>
-      <StyledLink href="/faqs">Faqs</StyledLink>
-        <StyledLink href="/connection">Connection</StyledLink>
-        <StyledLink href="/about">About</StyledLink>
-        <StyledLink href="/todo">Todo</StyledLink>
-        <StyledLink href="/privacy">
-          <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
+        <StyledLink href="/account">
+          <BiUserPlus style={{ color: "#00BFA5", fontSize: "25px" }} />
+        </StyledLink>
+        <StyledLink href="/search">
+          <BiSearch style={{ color: "#00BFA5", fontSize: "25px" }} />
+        </StyledLink>
+        <StyledLink href="/wish-list">
+          <BiHeart style={{ color: "#00BFA5", fontSize: "25px" }} />
+        </StyledLink>
+        <StyledLink href="/shop-cart">
+          <BiCart style={{ color: "#00BFA5", fontSize: "25px" }} />
         </StyledLink>
       </HeaderCart>
     </StyledHeader>
