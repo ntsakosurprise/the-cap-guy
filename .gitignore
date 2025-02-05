@@ -1,0 +1,12 @@
+
+build/
+lib/
+dist/
+ssl/
+/index.js
+*.env
+*.env.development
+*.env.production
+*.env.staging
+.vscode/*
+node_modules/
