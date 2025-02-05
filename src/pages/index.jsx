@@ -257,9 +257,7 @@ const Index = () => {
         </p>
         {/* <img src={connectionsSvg} width={50} alt="connections svg" /> */}
       </Hero>
-      <SVG>
-        <SVGConnections />
-      </SVG>
+     
       <img src={images.SearchImage} width={36} height={36} />
       <img src={images.StonesJPG} width={800} />
     </Main>
