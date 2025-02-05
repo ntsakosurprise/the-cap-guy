@@ -25,7 +25,7 @@ const BrandText = styled("p")((props) => {
 const Brand = (props) => {
   // eslint-disable-next-line react/prop-types
   const logo = props?.logo ? props.logo : "kotii";
-  const brandLogoSize = props?.brandLogoSize ? props.brandLogoSize : 100;
+  const brandLogoSize = props?.brandLogoSize ? props.brandLogoSize : 150;
   const logoSize = props?.logoSize ? props?.logoSize : 40;
   const { brandLogoTextStyles } = props?.brandLogoTextStyles
     ? props.brandLogoTextStyles
@@ -41,7 +41,7 @@ const Brand = (props) => {
         }}
       >
         <BrandLogo size={brandLogoSize}>
-          <Image src={TopCapGuyLogo} width={100} />
+          <Image src={TopCapGuyLogo} width={150} />
         </BrandLogo>
         
       </Link>
