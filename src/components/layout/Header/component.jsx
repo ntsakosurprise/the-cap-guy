@@ -17,7 +17,16 @@ const StyledHeader = styled("header")({
   justifyContent: "space-between",
 });
 
-const HeaderActions = styled("div")(() => {
+const HeaderCart = styled("div")(() => {
+  return {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 25,
+  };
+});
+
+const HeaderShop = styled("div")(() => {
   return {
     display: "flex",
     flexDirection: "row",
@@ -35,7 +44,7 @@ const AppHeader = () => {
   return (
     <StyledHeader>
       <Brand />
-      <HeaderActions>
+      <HeaderShop>
         {/* <Link href="https://github.com/ntsakosurprise/kotii" target={"_blank"}>
           <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
         </Link> */}
@@ -46,7 +55,17 @@ const AppHeader = () => {
         <StyledLink href="/privacy">
           <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
         </StyledLink>
-      </HeaderActions>
+      </HeaderShop>
+
+      <HeaderCart>
+      <StyledLink href="/faqs">Faqs</StyledLink>
+        <StyledLink href="/connection">Connection</StyledLink>
+        <StyledLink href="/about">About</StyledLink>
+        <StyledLink href="/todo">Todo</StyledLink>
+        <StyledLink href="/privacy">
+          <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
+        </StyledLink>
+      </HeaderCart>
     </StyledHeader>
   );
 };
