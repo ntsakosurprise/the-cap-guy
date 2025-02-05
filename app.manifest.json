@@ -7,7 +7,7 @@
   "useCustomDomain": true,
   "useSetPort": true,
   "useInlinedPngs": true,
-  "useAsDefaultPage": "faqs",
+  "useAsDefaultPage": "/",
   "build": "build",
   "static": "static",
   "aliases": {
