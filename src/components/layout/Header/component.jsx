@@ -86,6 +86,7 @@ const AppHeader = () => {
         <StyledLink href="/shop">Shop</StyledLink>
         <StyledLink href="/about">About</StyledLink>
         <StyledLink href="/contact">Contact</StyledLink>
+        <StyledLink href="/contact">Collections</StyledLink>
         
       </HeaderShop>
 
