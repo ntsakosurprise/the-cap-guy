@@ -1,11 +1,13 @@
 import { Head } from "kotii-scripts";
-import React from "react";
+import React,{useState} from "react";
 import Main from "../../shared/main.jsx";
 import styled from "kotii-styled";
 import { Link } from "wouter";
 import { BiSearch } from "react-icons/bi/index.js";
 import { BiX } from "react-icons/bi/index.js";
 import productsList from "./products.json"
+import {images} from "Assets"
+
 
 const Search = styled("div")(() => {
   return {
@@ -232,9 +234,10 @@ const renderProducts = (productItems)=>{
 
    return productItems.map((product)=>{
       return <ListItem>
-         <ListLink>
-           <ListImage src={product.image} />
+         <ListLink href={`/product?id=${product.id}`}>
+           <ListImage src={images[product.image]} />
            <ListText>{product.name}</ListText>
+           <ListText>{product.price}</ListText>
          </ListLink>
       </ListItem>
    })
@@ -259,6 +262,14 @@ const NotFound = ()=>{
   )
 }
 
+const OutOfStock = ()=>{
+
+  return (
+      <p>
+        The product is out of stock
+      </p>
+  )
+}
 const ProductSearch = () => {
 
   const [products,setProducts] = useState(productsList)
