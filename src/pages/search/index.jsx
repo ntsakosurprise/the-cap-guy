@@ -22,7 +22,8 @@ const Search = styled("div")(() => {
     width: "100%",
     height: "100vh",
     top: "0",
-    zIndex: 1000
+    zIndex: 1000,
+    overflow: "hidden"
   
   };
 });
@@ -95,12 +96,14 @@ const ForgotPasword = styled((Link))({
 
 const StyledButton = styled("button")({
   border: "none",
-  width: "150px",
+  width: "350px",
   backgroundColor: "inherit",
   cursor: "pointer",
   position: "relative",
   alignSelf:"center",
-  marginBottom: "50px",
+  marginBottom: "10px",
+  marginTop: "15px"
+
 
 });
 
@@ -190,7 +193,9 @@ const List = styled("ul")({
   display: "flex",
   flexDirection: "column",
   flexWrap: "wrap",
-  alignItems: "center"
+  alignItems: "center",
+  marginTop: 30,
+  gap: 15
 })
 
 const ListItem = styled("li")({
@@ -199,7 +204,15 @@ const ListItem = styled("li")({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  alignItems: "center"
+  alignItems: "center",
+  backgroundColor: "#e6d9d9",
+  width: "80%",
+  paddingLeft:"2%",
+  height: 50,
+  gap: 15,
+  borderRadius: "8px",
+  
+  
 })
 
 const ListLink = styled(Link)({
@@ -208,16 +221,16 @@ const ListLink = styled(Link)({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  alignItems: "center"
+  alignItems: "center",
+  gap: 20,
+  textDecoration: "none",
+  color: "black"
 })
 
 const ListImage = styled("img")({
-  margin: 0,
-  padding: 0,
+
   display: "flex",
-  flexDirection: "row",
-  flexWrap: "wrap",
-  alignItems: "center"
+  width: 50
 })
 
 
@@ -227,7 +240,8 @@ const ListText = styled("p")({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  alignItems: "center"
+  alignItems: "center",
+  fontSize: "18px"
 })
 
 const renderProducts = (productItems)=>{
@@ -237,7 +251,7 @@ const renderProducts = (productItems)=>{
          <ListLink href={`/product?id=${product.id}`}>
            <ListImage src={images[product.image]} />
            <ListText>{product.name}</ListText>
-           <ListText>{product.price}</ListText>
+           <ListText>{product.currency} {product.price}</ListText>
          </ListLink>
       </ListItem>
    })
@@ -256,7 +270,14 @@ const RenderProducts = (props)=>{
 const NotFound = ()=>{
 
   return (
-      <p>
+    <p style={{
+      display: "flex",
+      alignSelf: "center",
+      textAlign: "center",
+      marginTop: "30px",
+      fontSize: "40px",
+      width: "50%"
+          }}>
         No match was found for the product you are looking for
       </p>
   )
@@ -265,8 +286,16 @@ const NotFound = ()=>{
 const OutOfStock = ()=>{
 
   return (
-      <p>
-        The product is out of stock
+      <p style={{
+
+        display: "flex",
+        alignSelf: "center",
+        textAlign: "center",
+        marginTop: "30px",
+        fontSize: "40px",
+        width: "50%"
+      }}>
+        The searched product is out of stock
       </p>
   )
 }
@@ -301,10 +330,17 @@ const ProductSearch = () => {
             <SearchResultsTitle>
               Search results for
             </SearchResultsTitle>
-          </SearchResults>
-          <Results>
+            <Results>
             {products ? <RenderProducts products={products} /> : <NotFound />}
+            {/* <NotFound /> */}
+            {/* <OutOfStock /> */}
+            <StyledButton>
+                  <ButtonBackCard />
+                  <ButtonFrontCard>Go to Shop</ButtonFrontCard>
+            </StyledButton>
           </Results>
+          </SearchResults>
+          
          
 
         </Search>
