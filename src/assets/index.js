@@ -15,6 +15,8 @@ import CollectionThree from "./img/collections/collection_3.png"
 import CollectionFour from "./img/collections/collection_4.png"
 import NewsLetterBackground from "./img/news-letter.jpg"
 import ReferImage from "./img/refer.jpg"
+import Product_1  from "./img/products/product_1.png"
+import Product_2  from "./img/products/product_2.png"
 
 const images = {
   SearchImage,
@@ -24,7 +26,7 @@ const images = {
   ManStaring, CapHero, HeroSectionImage,
   CollectionOne, CollectionTwo, CollectionThree,
   CollectionFour, NewsLetterBackground,
-  ReferImage
+  ReferImage, Product_1, Product_2
 };
 // const svgs = {connections}
 const fonts = {};
