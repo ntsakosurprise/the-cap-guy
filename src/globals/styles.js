@@ -28,7 +28,8 @@ h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 	html, body{
 		background: #f2f3f4;
         font-size: 100%;
-		background: white;
+		background-color: #f2f3f4;
+		
 
 	}
     body {
