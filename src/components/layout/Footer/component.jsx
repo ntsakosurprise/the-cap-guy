@@ -20,8 +20,8 @@ const Footer = () => {
   return (
     <StyledFooter>
       
-      {/* <FooterActions />
-      <FooterBrand /> */}
+      
+      <FooterBrand />
       <img src={SvgComponent} width="100%" style={{
         
         bottom: 0
