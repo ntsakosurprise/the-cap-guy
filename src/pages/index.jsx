@@ -7,6 +7,12 @@ import { CONFIG } from "Config";
 import { loggas } from "kotii-logger";
 import { Head, useUniversalEffect } from "kotii-scripts";
 import SHopH from "../shared/shop-hero.jsx"
+import NewCollection from "../shared/new-collection.jsx";
+import NewsLetter from "../shared/news-letter.jsx";
+import Refferal from "../shared/refferal.jsx";
+import Company from "../shared/capguy.jsx";
+import ReturnPolicy from "../shared/return-policy.jsx";
+import Statement from "../shared/statement.jsx";
 import styled from "kotii-styled";
 import React from "react";
 import { AiFillFile, AiFillFolder } from "react-icons/ai/index.js";
@@ -23,7 +29,7 @@ import * as actions from "../store/home/actions.js";
 import "../styles/index.css";
 import "../styles/color.global.scss"
 
-import { BiCart, BiSolidHeart } from "react-icons/bi/index.js";
+import { BiCart, BiSolidHeart, BiHeart } from "react-icons/bi/index.js";
 
 
 const Main = styled("div")({
@@ -254,6 +260,7 @@ const Index = () => {
   return (
     <Main>
       <Head title={"The-cap-guy home"} />
+      
       <Hero>
         <HeroText className="doto-font">
           Ehance your style. 
@@ -355,15 +362,27 @@ const Index = () => {
           }}>185.00</small>
         </p>
 
-        <p style={{textAlign: "center", marginTop: "20px",cursor:"pointer"}}>
-          <button style={{
-            display: "inline-block",
-            borderTopLeftRadius: "8px",
-            padding: "0",
+        <p style={{
+            marginTop: "20px",
             cursor: "pointer",
-            backgroundColor: "#00BFA5",
+            display: "flex",
+            alignContent: "center",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap:15
+          }}>
+          <button style={{
+            display: "flex",
+            borderTopLeftRadius: "8px",
+            padding: "0px",
+            cursor: "pointer",
+            backgroundColor: "black",
             borderBottomLeftRadius: "8px",
-            height: "30px"
+            height: "30px",
+            alignContent: "center",
+            flexDirection: "row",
+            alignItems: "center"
           }}>
             <small style={{
               display: "inline-block",
@@ -382,8 +401,8 @@ const Index = () => {
                 textAlign: "center"
             }}>Add to cart</small>
           </button>
-          <button style={{backgroundColor: "none"}}>
-            <BiSolidHeart />
+          <button style={{backgroundColor: "transparent", cursor:"pointer"}}>
+            <BiHeart style={{fontSize: "25px", color: "#00BFA5"}} />
           </button>
         </p>
 
@@ -435,6 +454,13 @@ const Index = () => {
         {/* <img src={connectionsSvg} width={50} alt="connections svg" /> */}
       </Hero>
       <SHopH />
+      <NewCollection />
+      <Refferal />
+      <Statement />
+      <NewsLetter />
+      <Company />
+      <ReturnPolicy />
+      
      
       
       {/* <img src={images.HeroImage} width={500} /> */}
