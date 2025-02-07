@@ -8,6 +8,7 @@ import { BiSearch } from "react-icons/bi/index.js";
 import { BiHeart } from "react-icons/bi/index.js";
 import { Link } from "wouter";
 import { Brand } from "../shared/index.jsx";
+import {useRoute} from "wouter"
 
 // import { Link } from "react-router-dom";
 
@@ -70,25 +71,45 @@ const LinkText = styled("small")({
   fontWeight: "bold"
 })
 
-const AppHeader = () => {
+const AppHeader = (props) => {
+  const [isActive] = useRoute(props.href);
+  console.log("THE HEADER PROPS", props.href)
   return (
     <StyledHeader>
       <Brand />
       <HeaderShop>
-        {/* <Link href="https://github.com/ntsakosurprise/kotii" target={"_blank"}>
-          <TfiGithub style={{ color: "#00BFA5", fontSize: "25px" }} />
-        </Link> */}
-      
-          <LinkEllipseTextContainer href="/">
+       
+{/*       
+          <LinkEllipseTextContainer {...props} href="/">
+            
             <LinkText>Home</LinkText>
-            <LinkEllipse />
+            {isActive && props.href && props.href.toLowerCase() == "shop"  ? <LinkEllipse /> : null}
+            
           </LinkEllipseTextContainer>
+          <LinkEllipseTextContainer {...props} href="/shop">
+            
+            <LinkText>Shop</LinkText>
+            {isActive && props.href && props.href.toLowerCase() == "shop" ? <LinkEllipse /> : null}
+            
+          </LinkEllipseTextContainer>
+          <LinkEllipseTextContainer {...props} href="/About">
+            
+            <LinkText>About</LinkText>
+            {isActive && props.href && props.href.toLowerCase() == "shop" ? <LinkEllipse /> : null}
+            
+          </LinkEllipseTextContainer>
+          <LinkEllipseTextContainer {...props} href="/Contact-us">
+            
+            <LinkText>Contact</LinkText>
+            {isActive && props.href && props.href.toLowerCase() == "shop" ? <LinkEllipse /> : null}
+            
+          </LinkEllipseTextContainer> */}
         
-        
-        <StyledLink href="/shop">Shop</StyledLink>
+        <StyledLink {...props} href="/">Home</StyledLink>
+        <StyledLink {...props} href="/shop">Shop</StyledLink>
         <StyledLink href="/about">About</StyledLink>
-        <StyledLink href="/contact">Contact</StyledLink>
-        <StyledLink href="/contact">Collections</StyledLink>
+        <StyledLink href="/contact-us">Contact</StyledLink>
+        <StyledLink href="/shop">Collections</StyledLink>
         
       </HeaderShop>
 

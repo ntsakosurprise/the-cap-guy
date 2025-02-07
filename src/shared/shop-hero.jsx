@@ -76,7 +76,7 @@ const ShopH = () => {
              marginTop: "15px",
              marginBottom: "20px"
             }}>
-            The Hexagon Light Cap
+            The Black Snap Cap
             </small>
             </p>
             

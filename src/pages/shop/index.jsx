@@ -7,23 +7,22 @@ import { BiSearch } from "react-icons/bi/index.js";
 import { BiX } from "react-icons/bi/index.js";
 import productsList from "./products.json"
 import {images} from "Assets"
+import { BiSolidStar } from "react-icons/bi/index.js";
 
-
-const Search = styled("div")(() => {
+const Products = styled("div")(() => {
   return {
    
     display: "flex",
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    position: "absolute",
+  
     backgroundColor: "#e8ebee",
     flexWrap: "wrap",
     width: "100%",
-    height: "100vh",
-    top: "0",
-    zIndex: 1000,
-    overflow: "hidden"
+
+   
+  
   
   };
 });
@@ -178,39 +177,43 @@ const Results = styled("div")({
 });
 
 
-const SearchResultsTitle = styled("div")({
+const ProductsTitle = styled("div")({
   display: "flex",
   flexDirection: "row",
-  marginTop: 50,
-  gap: 15,
+  marginTop: "50px",
+  gap: "15px",
   alignSelf: "center",
-  fontSize: "30px"
+  fontSize: "30px",
+  fontWeight: "bolder"
 });
 
 const List = styled("ul")({
   margin: 0,
   padding: 0,
   display: "flex",
-  flexDirection: "column",
-  flexWrap: "wrap",
-  alignItems: "center",
-  marginTop: 30,
-  gap: 15
-})
-
-const ListItem = styled("li")({
-  margin: 0,
-  padding: 0,
-  display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
   alignItems: "center",
-  backgroundColor: "#e6d9d9",
-  width: "80%",
-  paddingLeft:"2%",
-  height: 50,
+  marginTop: 30,
   gap: 15,
-  borderRadius: "8px",
+  justifyContent: "center"
+})
+
+const ListItem = styled("li")({
+  margin: "0",
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  width: "300px",
+  height: "auto",
+  gap: "30px",
+  marginBottom: "50px",
+  backgroundColor: "#f9f4f4",
+  paddingTop: "15px",
+  paddingBottom: "25px",
+
+  
   
   
 })
@@ -219,7 +222,7 @@ const ListLink = styled(Link)({
   margin: 0,
   padding: 0,
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "column",
   flexWrap: "wrap",
   alignItems: "center",
   gap: 20,
@@ -230,8 +233,24 @@ const ListLink = styled(Link)({
 const ListImage = styled("img")({
 
   display: "flex",
-  width: 50
+  width: 80
 })
+
+const ListImageContainer = styled("p")({
+
+  display: "flex",
+  backgroundColor: 'wheat',
+  height: 150,
+  width: 150,
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%"
+
+
+
+})
+
+
 
 
 const ListText = styled("p")({
@@ -244,14 +263,38 @@ const ListText = styled("p")({
   fontSize: "18px"
 })
 
+const ProductRating = styled("p")({
+ 
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 20,
+  justifyContent: "center"
+
+  
+})
+
 const renderProducts = (productItems)=>{
 
    return productItems.map((product)=>{
       return <ListItem>
          <ListLink href={`/product?id=${product.id}`}>
-           <ListImage src={images[product.image]} />
+           <ListImageContainer>
+            <ListImage src={images[product.image]} />
+           </ListImageContainer>
+          <ProductRating>
+             <small>
+              <BiSolidStar style={{color: "green", fontSize: 17}} />
+             </small>
+             <small style={{fontSize: 15}}>
+               {product.rating}
+             </small>
+          </ProductRating>
            <ListText>{product.name}</ListText>
            <ListText>{product.currency} {product.price}</ListText>
+           <ListText>Available: {product.count}</ListText>
+           <ListText>Status: {product.status}</ListText>
          </ListLink>
       </ListItem>
    })
@@ -299,51 +342,29 @@ const OutOfStock = ()=>{
       </p>
   )
 }
-const ProductSearch = () => {
+const Shop = () => {
 
   const [products,setProducts] = useState(productsList)
    
   return (
     
-      // <Head title={"Search | TheCapGuy"} />
+      // <Head title={"Products | TheCapGuy"} />
       
-      <Search>
+      <Products>
 
 
-        <Form>
-          <BiSearch style={{ color: "#00BFA5", fontSize: "25px", cursor: "pointer" }} />
-          <FormInput placeholder="Search for any cap you wish to purchase" />
-          <BiX style={{ color: "#00BFA5", fontSize: "25px", cursor: "pointer" }} />
-        
-          {/* <SignUpLoginContainer>
-            <StyledButton>
-                  <ButtonBackCard />
-                  <ButtonFrontCard>Create</ButtonFrontCard>
-            </StyledButton>
+          
+            <ProductsTitle>
+              Products
+            </ProductsTitle>
             
-
-          </SignUpLoginContainer> */}
-
-          </Form>
-
-          <SearchResults >
-            <SearchResultsTitle>
-              Search results for
-            </SearchResultsTitle>
-            <Results>
-            {products ? <RenderProducts products={products} /> : <NotFound />}
-            {/* <NotFound /> */}
-            {/* <OutOfStock /> */}
-            <StyledButton>
-                  <ButtonBackCard />
-                  <ButtonFrontCard>Go to Shop</ButtonFrontCard>
-            </StyledButton>
-          </Results>
-          </SearchResults>
+            {products ? <RenderProducts products={products} /> : <ProductListingError />}
+  
+          
           
          
 
-        </Search>
+        </Products>
         
       
       
@@ -351,4 +372,4 @@ const ProductSearch = () => {
   );
 };
 
-export default ProductSearch;
+export default Shop;

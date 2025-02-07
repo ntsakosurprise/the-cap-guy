@@ -1,0 +1,20 @@
+[
+    {
+      "name": "The Good Cap",
+      "price": "185",
+      "currency": "R",
+      "image": "Product_1",
+      "status": "in-stock",
+      "count": 1,
+      "id": "10_3ab"
+    },
+    {
+      "name": "The fugyt Cap",
+      "price": "485",
+      "currency": "R",
+      "image": "Product_2",
+      "status": "out-of-stock",
+      "count": 1,
+      "id": "11_3ab"
+    }
+  ]

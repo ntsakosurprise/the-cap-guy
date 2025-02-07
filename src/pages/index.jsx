@@ -53,7 +53,7 @@ const Hero = styled("div")(() => {
     minHeight: "80vh",
     backgroundImage: `url(${images.HeroImage})`,
     backgroundSize: "contain",
-    paddingLeft: "3%",
+  
     paddingTop: "10vh",
     position: "relative"
   };
