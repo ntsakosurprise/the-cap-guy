@@ -20,20 +20,21 @@ const MakerByText = styled("p")({
 });
 const MakerAuthText = styled("small")({
   display: "block",
-  fontSize: "30px",
+  fontSize: "18px",
   color: "white",
 });
 
 const FooterWrapper = styled("div")({
   width: "100%",
   display: "flex",
-  backgroundColor: "#00B29A",
   flexDirection: "row",
-  justifyItems: "center",
   alignItems: "center",
   minHeight: "80px",
-  //   paddingLeft: "2%",
   paddingTop: "25px",
+  position: "absolute",
+  bottom: "0",
+  backgroundColor: "transparent",
+  justifyContent: "center"
 });
 
 const FooterBrandWrapper = styled("div")({
@@ -57,35 +58,16 @@ const Text = styled("small")({
 const FooterBrand = () => {
   return (
     <FooterWrapper>
-      <FooterBrandWrapper>
-        <AuthorText>
-          <MakerByText>
-            <Text>Made By</Text>
-            <CustomLink
-              href="https://twitter.com/ntsakosurprise"
-              target={"_blank"}
-            >
-              <AiFillTwitterCircle />
-            </CustomLink>
-            <CustomLink
-              href="https://github.com/ntsakosurprise"
-              target={"_blank"}
-            >
-              <AiFillGithub />
-            </CustomLink>
-          </MakerByText>
+     
+        
+  
           <MakerAuthText>
-            <small style={{ color: "black", fontWeight: "bolder" }}>@</small>
-            NtsakoSurprise
+            
+          &#169; 2025 TheCapGuy PTY LTD
           </MakerAuthText>
-        </AuthorText>
-        <Brand
-          logo={"kotiiAlt"}
-          logoSize={80}
-          brandLogoSize={80}
-          brandLogoTextStyles={{ fontSize: "35px", marginTop: "15px" }}
-        />
-      </FooterBrandWrapper>
+        
+        
+      
     </FooterWrapper>
   );
 };
