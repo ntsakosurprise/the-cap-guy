@@ -1,0 +1,14 @@
+[
+    {
+      "name": "The Good Cap",
+      "price": "185",
+      "currency": "R",
+      "image": "GoodProductImage_1"
+    },
+    {
+      "name": "The fugyt Cap",
+      "price": "485",
+      "currency": "R",
+      "image": "GoodProductImage_2"
+    }
+  ]
