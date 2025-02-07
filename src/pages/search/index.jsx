@@ -5,6 +5,7 @@ import styled from "kotii-styled";
 import { Link } from "wouter";
 import { BiSearch } from "react-icons/bi/index.js";
 import { BiX } from "react-icons/bi/index.js";
+import productsList from "./products.json"
 
 const Search = styled("div")(() => {
   return {
@@ -181,10 +182,86 @@ const SearchResultsTitle = styled("div")({
   fontSize: "30px"
 });
 
+const List = styled("ul")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center"
+})
+
+const ListItem = styled("li")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center"
+})
+
+const ListLink = styled(Link)({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center"
+})
+
+const ListImage = styled("img")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center"
+})
 
 
+const ListText = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center"
+})
+
+const renderProducts = (productItems)=>{
+
+   return productItems.map((product)=>{
+      return <ListItem>
+         <ListLink>
+           <ListImage src={product.image} />
+           <ListText>{product.name}</ListText>
+         </ListLink>
+      </ListItem>
+   })
+
+}
+
+const RenderProducts = (props)=>{
+
+  return (
+      <List>
+        {renderProducts(props.products)}
+      </List>
+  )
+}
+
+const NotFound = ()=>{
+
+  return (
+      <p>
+        No match was found for the product you are looking for
+      </p>
+  )
+}
 
 const ProductSearch = () => {
+
+  const [products,setProducts] = useState(productsList)
    
   return (
     
@@ -214,6 +291,9 @@ const ProductSearch = () => {
               Search results for
             </SearchResultsTitle>
           </SearchResults>
+          <Results>
+            {products ? <RenderProducts products={products} /> : <NotFound />}
+          </Results>
          
 
         </Search>
