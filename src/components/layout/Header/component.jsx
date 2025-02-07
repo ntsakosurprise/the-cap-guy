@@ -45,7 +45,9 @@ const HeaderShop = styled("div")(() => {
 const StyledLink = styled(Link)({
   display: "flex",
   flexDirection: "row",
-  color: "green"
+  color: "green",
+  cursor: "pointer",
+  position: "relative"
 });
 const LinkEllipseTextContainer = styled(Link)({
   display: "flex",
@@ -91,18 +93,17 @@ const AppHeader = () => {
       </HeaderShop>
 
       <HeaderCart>
-        <StyledLink href="/account">
-          <BiUserPlus style={{ color: "#00BFA5", fontSize: "25px" }} />
-         
+        <StyledLink href="/login">
+          <BiUserPlus style={{ color: "#00BFA5", fontSize: "25px", cursor: "pointer" }} />
         </StyledLink>
         <StyledLink href="/search">
-          <BiSearch style={{ color: "#00BFA5", fontSize: "25px" }} />
+          <BiSearch style={{ color: "#00BFA5", fontSize: "25px", cursor: "pointer" }} />
         </StyledLink>
         <StyledLink href="/wish-list">
-          <BiHeart style={{ color: "#00BFA5", fontSize: "25px" }} />
+          <BiHeart style={{ color: "#00BFA5", fontSize: "25px",cursor: "pointer" }} />
         </StyledLink>
         <StyledLink href="/shop-cart">
-          <BiCart style={{ color: "#00BFA5", fontSize: "25px" }} />
+          <BiCart style={{ color: "#00BFA5", fontSize: "25px", cursor: "pointer" }} />
         </StyledLink>
       </HeaderCart>
     </StyledHeader>
