@@ -8,12 +8,23 @@ import CapsImage from "./img/caps.jpg"
 import StackedImage from "./img/stacked.jpg"
 import ManStaring from "./img/man_staring.jpg" 
 import CapHero from "./img/cap-hero.jpg"
+import HeroSectionImage from "./img/flow.png" 
+import CollectionOne from "./img/collections/collection_1.png"
+import CollectionTwo from "./img/collections/collection_2.png"
+import CollectionThree from "./img/collections/collection_3.png"
+import CollectionFour from "./img/collections/collection_4.png"
+import NewsLetterBackground from "./img/news-letter.jpg"
+import ReferImage from "./img/refer.jpg"
+
 const images = {
   SearchImage,
   StonesJPG,HeroImage, 
   MiniCapImage,BackgroundImage, 
   CapsImage, StackedImage,
-  ManStaring, CapHero
+  ManStaring, CapHero, HeroSectionImage,
+  CollectionOne, CollectionTwo, CollectionThree,
+  CollectionFour, NewsLetterBackground,
+  ReferImage
 };
 // const svgs = {connections}
 const fonts = {};
