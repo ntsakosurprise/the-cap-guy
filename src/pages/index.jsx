@@ -13,6 +13,8 @@ import Refferal from "../shared/refferal.jsx";
 import Company from "../shared/capguy.jsx";
 import ReturnPolicy from "../shared/return-policy.jsx";
 import Statement from "../shared/statement.jsx";
+import About from "../shared/about.jsx";
+import Contact from "../shared/contact.jsx";
 import styled from "kotii-styled";
 import React from "react";
 import { AiFillFile, AiFillFolder } from "react-icons/ai/index.js";
@@ -263,7 +265,7 @@ const Index = () => {
       
       <Hero>
         <HeroText className="doto-font">
-          Ehance your style. 
+          Enhance your style. 
           
         </HeroText>
         <HeroText className="doto-font">
@@ -459,6 +461,8 @@ const Index = () => {
       <Statement />
       <NewsLetter />
       <Company />
+      <About />
+      <Contact />
       <ReturnPolicy />
       
      
