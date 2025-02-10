@@ -1,15 +1,14 @@
 import styled from "kotii-styled";
 import React from "react";
 import { images } from "Assets";
-import { useLocation } from "wouter";
-
 
 const ShopHero = styled("div")({
   width: "100%",
   height: "auto",
   backgroundColor:"#FF0066",
   display: "flex",
-  flexDirection: "row"
+  flexDirection: "row",
+  marginTop: "30px"
 });
 
 const ShopHeroApparel = styled("div")({
@@ -55,18 +54,26 @@ const StyledButton = styled("button")({
     position: "absolute",
   });
 
-const ShopH = () => {
-    const [location, navigate] = useLocation();
-
+const About = () => {
   return (
     <ShopHero>
      
      
+     
+     <ShopHeroUser>
+        <img src={images.ReferImage} style={{
+            width: "70%",
+            margin: "0 auto",
+            display: "block",
+            borderTop: "50px solid transparent",
+            borderRight: "100px solid #f2f3f4",
+            borderBottom: "50px solid transparent"
+  }} />
+     </ShopHeroUser>
      <ShopHeroApparel>
 
          <div style={{
              minHeight: "150px",
-             borderBottom: "solid 1px red",
              width: "90%",
              margin: "0 auto"
              
@@ -75,33 +82,27 @@ const ShopH = () => {
             <p>
             <small style={{
              display: "block",
-             fontSize: "25px",
+             fontSize: "50px",
              fontWeight: "bold",
              marginTop: "15px",
-             marginBottom: "20px"
+             marginBottom: "20px",
+             color: "#5b5b2e"
             }}>
-            The Black Snap Cap
+            Refer & Earn
             </small>
             </p>
             
 
             <p>
+            
             <small style={{
                 display: "inline-block",
-                marginRight: "8px",
-                fontSize: "15px",
+                fontSize: "25px",
                 fontWeight: "lighter",
-                fontStyle: "oblique"
+                
             }}>
-                By
-            </small>
-            <small style={{
-                display: "inline-block",
-                fontSize: "20px",
-                fontWeight: "bold",
-                color: "#5b5b2e"
-            }}>
-                The Cap Guy(R)
+                Refer a friend using your referral link and
+                you'll both get a discount on your next TheCapGuy order.
             </small>
             </p>
 
@@ -119,39 +120,19 @@ const ShopH = () => {
              
           
              }}>
+           
             <p>
-            <small style={{
-                display: "block",
-                fontSize: "20px",
-                fontWeight: "bolder",
-                color: "#9db915",
-                marginRight: "2px",
-                marginBottom: "5px"
-            }}>From</small>
-            <small style={{
-                display: "block",
-                fontSize: "25px"
-            }}>185 R</small>
-            </p>
-            <p>
-            <StyledButton onClick={()=>navigate("/product?id=1")}>
+            <StyledButton>
                 <ButtonBackCard />
-                <ButtonFrontCard >Go To Product </ButtonFrontCard>
+                <ButtonFrontCard>Get Started </ButtonFrontCard>
             </StyledButton>
             </p>
          </div>
         
 
      </ShopHeroApparel>
-     <ShopHeroUser>
-        <img src={images.HeroSectionImage} style={{
-            width: "70%",
-            margin: "0 auto",
-            display: "block"
-  }} />
-     </ShopHeroUser>
     </ShopHero>
   );
 };
 
-export default ShopH;
+export default About;
