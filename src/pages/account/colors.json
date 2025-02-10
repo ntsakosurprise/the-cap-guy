@@ -1,0 +1,45 @@
+[
+    
+    {
+      "color": "wheat",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+      "color": "red",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+      "color": "yellow",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+      "color": "green",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    },
+    {
+      "color": "brown",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    },
+    {
+      "color": "black",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    }
+    
+    
+ 
+  ]
