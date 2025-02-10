@@ -1,0 +1,45 @@
+[
+  {
+    "name": "The Good Cap",
+    "price": "185",
+    "currency": "R",
+    "image": "CollectionOne",
+    "status": "in-stock",
+    "count": 30,
+    "id": "10_3ab",
+    "rating": "3.5"
+  },
+  {
+    "name": "The fugyt Cap",
+    "price": "485",
+    "currency": "R",
+    "image": "CollectionTwo",
+    "status": "out-of-stock",
+    "count": 1,
+    "id": "11_3ab",
+    "rating": "3.5"
+  },
+  {
+    "name": "The fugyt Cap",
+    "price": "485",
+    "currency": "R",
+    "image": "CollectionThree",
+    "status": "out-of-stock",
+    "count": 1,
+    "id": "11_3ab",
+    "rating": "3.5"
+  },
+  {
+    "name": "The fugyt Cap",
+    "price": "485",
+    "currency": "R",
+    "image": "CollectionFour",
+    "status": "out-of-stock",
+    "count": 1,
+    "id": "11_3ab",
+    "rating": "3.5"
+  }
+ 
+
+  
+]

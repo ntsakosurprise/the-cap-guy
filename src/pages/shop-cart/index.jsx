@@ -14,6 +14,8 @@ import appFilters from "./active-filters.json"
 import {images} from "Assets"
 import { BiSolidStar } from "react-icons/bi/index.js";
 import { BiCart, BiSolidHeart, BiHeart,BiCheck } from "react-icons/bi/index.js";
+import navigationItems from "./navigation-items.json"
+import recommendedProducts from "./recommended.json"
 
 
 const Products = styled("div")(() => {
@@ -23,10 +25,10 @@ const Products = styled("div")(() => {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-  
     backgroundColor: "#e8ebee",
     flexWrap: "wrap",
     width: "100%",
+    paddingBottom: 100
 
    
   
@@ -804,288 +806,482 @@ const ActiveDetail = styled("p")((props)=>{
   
 })
 
+
+
+
+const UserNavigation = styled("ul")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "start",
+  paddingLeft: "10%",
+  marginTop: 30,
+  gap: 2,
+  justifyContent: "center",
+
+})
+
+const UserNavigationItem = styled("li")({
+  margin: "0",
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  backgroundColor: "#f9f4f4",
+  width: "100%",
+  borderRadius: "8px",
+  paddingLeft: "5%",
+  height: 40,
+  cursor: "pointer"
+
+  
+})
+
+const UserNavigationLink = styled(Link)({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  textDecoration: "none",
+  color: "black",
+  width: "100%",
+})
+
+const UserAccountImage = styled("img")({
+
+  display: "flex",
+  width: 120,
+  height: 120,
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  alignSelf: "center"
+})
+
+const UserNavigationImageContainer = styled("p")({
+
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+
+})
+
+const DashboardSalutation = styled("div")({
+
+  display: "flex",
+  alignItems: "start",
+  justifyContent: "center",
+  flexDirection: "column",
+  backgroundColor: "wheat",
+  width: "95%",
+  height: "150px",
+  borderRadius: "8px",
+  paddingLeft: "2%",
+  gap: "10px"
+
+})
+
+const UserAccount = styled("div")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  marginTop: 30,
+  gap: 15,
+  justifyContent: "center",
+  flex: 3.5
+})
+
+const Recommeded = styled("div")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 15,
+  justifyContent: "center",
+  width: "95%"
+ 
+})
+
+const RecommededTitle = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 15,
+  justifyContent: "center",
+  alignSelf: "start",
+  marginTop: "30px",
+  marginBottom: "30px",
+  fontWeight: "lighter"
+ 
+})
+
+const RecommededList =  styled("ul")(()=>{
+  return{
+    display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  width: "95%"
+  }
+})
+
+const WishList = styled("div")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 15,
+  justifyContent: "center",
+  width: "95%"
+
+  
+ 
+})
+
+const WishListTitle = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 15,
+  justifyContent: "center",
+  alignSelf: "start",
+  marginTop: "30px",
+  marginBottom: "30px",
+  fontWeight: "lighter"
+ 
+})
+
+const WishListList =  styled("ul")(()=>{
+  return{
+    display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  width: "95%",
+  gap: "10px"
+  }
+})
+
+
+
+
+const renderRecommended = (recoms)=>{
+  
+  return recoms.map((recom)=>{
+    return(
+      <CollectionItem>
+         <CollectionPair>
+          <CollectionItemImage image={images[recom.image]} />
+    
+         </CollectionPair>
+              
+         <CollectionTraits>
+            <CollectionPrice>
+              {`${recom.currency} ${recom.price}`}
+            </CollectionPrice>
+            <CollectionColor />
+            
+            
+         </CollectionTraits>
+      </CollectionItem>
+    )
+  })
+}
+const renderWishlist = (recoms)=>{
+  
+  return recoms.map((recom)=>{
+    return(
+      <WishListItem>
+         <WishListPair>
+          <WishListItemImage image={images[recom.image]} />
+    
+         </WishListPair>
+              
+         <WishListTraits>
+            <WishListPrice>
+              {`${recom.currency} ${recom.price}`}
+            </WishListPrice>
+            <WishListColor>
+              {recom.name}
+            </WishListColor>
+            
+            
+         </WishListTraits>
+      </WishListItem>
+    )
+  })
+}
 const renderProducts = (productItems)=>{
 
-   return productItems.map((product)=>{
-      return <ListItem>
-         <ListLink href={`/product?id=${product.id}`}>
-           <ListImageContainer>
-            <ListImage src={images[product.image]} />
-           </ListImageContainer>
-          <ProductRating>
-             <small>
-              <BiSolidStar style={{color: "green", fontSize: 17}} />
+  return productItems.map((product)=>{
+     return <ListItem>
+        <ListLink href={`/product?id=${product.id}`}>
+          <ListImageContainer>
+           <ListImage src={images[product.image]} />
+          </ListImageContainer>
+         <ProductRating>
+            <small>
+             <BiSolidStar style={{color: "green", fontSize: 17}} />
+            </small>
+            <small style={{fontSize: 15}}>
+              {product.rating}
+            </small>
+         </ProductRating>
+          <ListProductName>{product.name}</ListProductName>
+          <ListProductPrice>{product.currency} {product.price}</ListProductPrice>
+          <ListProductStatusContainer>
+           <ListProductStatus>
+             <small style={{fontSize: "20px", fontWeight: "bolder" }}>
+             {product.count}
              </small>
-             <small style={{fontSize: 15}}>
-               {product.rating}
+             <small style={{fontSize: "14px", fontWeight: "lighter"}}>
+               Available
              </small>
-          </ProductRating>
-           <ListProductName>{product.name}</ListProductName>
-           <ListProductPrice>{product.currency} {product.price}</ListProductPrice>
-           <ListProductStatusContainer>
-            <ListProductStatus>
-              <small style={{fontSize: "20px", fontWeight: "bolder" }}>
-              {product.count}
-              </small>
-              <small style={{fontSize: "14px", fontWeight: "lighter"}}>
-                Available
-              </small>
-              
-              </ListProductStatus>
+             
+             </ListProductStatus>
 
-              {/* <ListProductStatus>
-              <small style={{fontSize: "20px", fontWeight: "bolder" }}>
-              {product.status}
-              </small>
-              <small style={{fontSize: "14px", fontWeight: "lighter"}}>
-                Stock Status
-              </small>
-              
-              </ListProductStatus> */}
-           </ListProductStatusContainer>
+             {/* <ListProductStatus>
+             <small style={{fontSize: "20px", fontWeight: "bolder" }}>
+             {product.status}
+             </small>
+             <small style={{fontSize: "14px", fontWeight: "lighter"}}>
+               Stock Status
+             </small>
+             
+             </ListProductStatus> */}
+          </ListProductStatusContainer>
 
-           <ActionButtons>
-             <ProductsCount>
+          <ActionButtons>
+            <ProductsCount>
+              
+              <AddRemoveButton>
+                 -
+              </AddRemoveButton>
+              <Count placeholder="1" />
                
-               <AddRemoveButton>
-                  -
-               </AddRemoveButton>
-               <Count placeholder="1" />
-                
 
-               <AddRemoveButton>
-                  +
-               </AddRemoveButton>
+              <AddRemoveButton>
+                 +
+              </AddRemoveButton>
 
-             </ProductsCount>
-             <ProductCart>
-                <AddCart >
-                  Add to cart
-                </AddCart>
-             </ProductCart>
-             <ProductsLike>
-             <BiHeart style={{color: "green", fontSize: 17}} />
-             </ProductsLike>
-           </ActionButtons>
+            </ProductsCount>
+            <ProductCart>
+               <AddCart >
+                 Add to cart
+               </AddCart>
+            </ProductCart>
+            <ProductsLike>
+            <BiHeart style={{color: "green", fontSize: 17}} />
+            </ProductsLike>
+          </ActionButtons>
+         
           
-           
-         </ListLink>
-      </ListItem>
-   })
+        </ListLink>
+     </ListItem>
+  })
 
 }
+
 
 const RenderProducts = (props)=>{
 
   return (
      <ProductsFilter>
       <Filter>
-        <ColorFilter>
-        <ColorFilterTitle>Pick Color</ColorFilterTitle>
-        <ColorFilterSwatches>
-
-        {colors.map((color,i)=>{
-            return (
-              <ColorFilterSwatch color={color}>
-                {i === 0 
-                ? <BiCheck style={{color: color.shouldShowContrast ? color.contrast : ""}} />
-                : null
-              } 
-              </ColorFilterSwatch>
-            )
-        })}
         
-        </ColorFilterSwatches>
-        </ColorFilter>
-       
-        <CollectionFilter>
-        <ColorFilterTitle>Collections</ColorFilterTitle>
-
-        {collections.map((collectionItem,i)=>{
-            return (
-              <CollectionFilterText>
-              <CheckBox>
-                 {i === 0 
-                   ? <BiCheck style={{
-                    position: "absolute",
-                    top: "-5px",
-                    left: "-3px",
-                    bottom: "15px",
-                    fontSize: "18px"
-                 }} />
-                   : null
-                 }
-                
-               </CheckBox>
-               <small>
-               { collectionItem.name
-              } 
-               </small>
-              </CollectionFilterText>
-            )
-        })}
-
-        
-        </CollectionFilter>
-
-        <PriceFilter>
-        <PriceFilterTitle>Price</PriceFilterTitle>
-        <PriceFilterSwatches>
+        <UserAccountImage src={images.CapHero} />
+        <UserNavigation>
+        {
+          renderNavigation(navigationItems)
+        }
+        </UserNavigation>
 
        
-              <PriceFilterSort>
-                <PriceFilterSortOption>
-                  Min Price
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  Any
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  85
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  150
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  250
-                </PriceFilterSortOption>
-              </PriceFilterSort>
-
-              <PriceFilterSort>
-                <PriceFilterSortOption>
-                  Max Price
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  Any
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  85
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  150
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  250
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  350
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  450
-                </PriceFilterSortOption>
-                <PriceFilterSortOption>
-                  1000
-                </PriceFilterSortOption>
-              </PriceFilterSort>
-             
-             
-        
-        </PriceFilterSwatches>
-        </PriceFilter>
-
-        <SizeFilter>
-        <SizeFilterTitle>Pick Size</SizeFilterTitle>
-        <SizeFilterSwatches>
-
-        {sizes.map((size,i)=>{
-            return (
-              <SizeFilterSwatch>
-
-                {size.size.toLowerCase() === "m"
-                ? <BiCheck  style={{
-                  position: "absolute",
-                  top: "-5px",
-                  left: "50%",
-                  color: "green",
-                  fontWeight: "bolder",
-                  fontSize: "18px"
-                   }}/>
-                :null
-                }
-                
-                {size.size.toUpperCase()
-              } 
-              </SizeFilterSwatch>
-            )
-        })}
-        
-        </SizeFilterSwatches>
-        </SizeFilter>
 
 
-        <BrandsFilter>
-        <ColorFilterTitle>Brands</ColorFilterTitle>
-
-        {brands.map((brandItem,i)=>{
-            return (
-              <BrandsFilterText>
-               <CheckBox>
-                 {i === 0 
-                   ? <BiCheck style={{
-                    position: "absolute",
-                    top: "-5px",
-                    left: "-3px",
-                    bottom: "15px",
-                    fontSize: "18px"
-                 }} />
-                   : null
-                 }
-                
-               </CheckBox>
-               <small>
-               { brandItem.name
-              } 
-               </small>
-              
-              </BrandsFilterText>
-            )
-        })}
-
-        
-        
-        
-        </BrandsFilter>
+     
       </Filter>
-      <List>
-        {renderProducts(props.products)}
-      </List>
+      <UserAccount>
+        <DashboardSalutation>
+          <small style={{fontSize: "30px", fontWeight: "bolder" }}>
+            Hi, SurpriseNtsako
+          </small>
+          <small style={{ fontWeight: "lighter"}}>
+            Check out your wish list below
+          </small>
+        </DashboardSalutation>
+
+        <Recommeded>
+          <RecommededTitle>
+          Recommended products
+          </RecommededTitle>
+          <RecommededList>
+            {
+              renderRecommended(recommendedProducts)
+            }
+            
+          </RecommededList>
+        </Recommeded>
+
+       
+        
+        
+        
+        {/* {renderProducts(props.products)} */}
+      </UserAccount>
      </ProductsFilter>
       
   )
 }
 
-const NotFound = ()=>{
+const renderNavigation = (navigationItems)=>{
 
-  return (
-    <p style={{
-      display: "flex",
-      alignSelf: "center",
-      textAlign: "center",
-      marginTop: "30px",
-      fontSize: "40px",
-      width: "50%"
-          }}>
-        No match was found for the product you are looking for
-      </p>
+  return navigationItems.map((navigationItem)=>{
+     return <UserNavigationItem>
+        <UserNavigationLink href={`${navigationItem.link}`}>
+          <UserNavigationImageContainer>
+           
+           <small style={
+             {
+              fontSize: "13px", fontWeight: "lighter" 
+           }}
+           >{
+              navigationItem.name
+             }</small>
+
+          </UserNavigationImageContainer>   
+        </UserNavigationLink>
+     </UserNavigationItem>
+  })
+
+}
+
+
+const CollectionItem = styled(("div"))({
+  display: "flex",
+  flexDirection: "column",
+  cursor: "pointer",
+  gap: 30,
+  flex:1
+})
+
+const CollectionPair = styled(("p"))({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-around",
+  "&:hover button":{
+    display: "block"
+  }
+})
+
+
+const CollectionTraits = styled(("section"))({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  gap: "10px"
+})
+
+const CollectionPrice = styled(("section"))({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around"
+})
+
+
+const CollectionColor = styled(("p"))((props)=>{
+  
+  return { width: "20px",
+   height: "20px",
+   borderRadius: "50%",
+   backgroundColor: props.color || "black"
+  }
+})
+
+const CollectionItemImage = (props)=>{
+  
+  return(
+    <img src={props.image} style={{
+      width: 70
+    }} />
   )
 }
 
-const OutOfStock = ()=>{
 
-  return (
-      <p style={{
 
-        display: "flex",
-        alignSelf: "center",
-        textAlign: "center",
-        marginTop: "30px",
-        fontSize: "40px",
-        width: "50%"
-      }}>
-        The searched product is out of stock
-      </p>
+const WishListItem = styled(("div"))({
+
+  display: "flex",
+  flexDirection: "column",
+  cursor: "pointer",
+  gap: "30px",
+  flex: 1,
+  backgroundColor: "#eae0e0",
+  borderRadius: "5px",
+  height: "200px",
+  paddingTop: "15px"
+})
+
+const WishListPair = styled(("p"))({
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-around",
+  "&:hover button":{
+    display: "block"
+  }
+})
+
+
+const WishListTraits = styled(("section"))({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around",
+  alignItems: "center",
+  gap: "10px"
+})
+
+const WishListPrice = styled(("section"))({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-around"
+})
+
+
+const WishListColor = styled(("p"))((props)=>{
+  
+  return {
+    fontSize: "15px",
+    fontWeight: "bold"
+  }
+})
+
+const WishListItemImage = (props)=>{
+  
+  return(
+    <img src={props.image} style={{
+      width: 70
+    }} />
   )
 }
+
 const Shop = () => {
 
   const [products,setProducts] = useState(productsList)
@@ -1099,65 +1295,7 @@ const Shop = () => {
 
 
           
-            <ProductsSortLine>
-             <ProductsSortTitle>
-              <ProductsTitle>
-                Products ({products.length})
-              </ProductsTitle>
-              <SortCategories>
-                <SortCategoryItem href="/end-of-season">
-                  end of seaseon sale
-                </SortCategoryItem>
-                <SortCategoryItem href="/new-arrivals">
-                  new arrrivals
-                </SortCategoryItem>
-                <SortCategoryItem href="/priced-to-go">
-                  priced-to-go
-                </SortCategoryItem>
-              </SortCategories>
-             </ProductsSortTitle>
-
-             <ActiveFilters>
-             <ProductsTitle>
-                Active Filters
-              </ProductsTitle>
-               <ActiveFiltersWrapper>
-               {
-                 appFilters.map((filter)=>{
-                   console.log("ACTIVE FILTER", filter)
-                   return(
-                    <ActiveFilter>
-                    <ActiveTitle>
-                      {filter.title}
-                    </ActiveTitle>
-                    <ActiveDetail>
-                      {filter.value}
-                    </ActiveDetail>
-                  </ActiveFilter>
-                   )
-                 })
-               }
-               </ActiveFiltersWrapper>
-              
-             </ActiveFilters>
-             
-             <ProductsSortContainer>
-              <ProductsSortText>
-                  Sort by
-                </ProductsSortText>
-                <ProductsSort>
-                  <ProductsSortOption>Popular</ProductsSortOption>
-                  <ProductsSortOption>Low To High</ProductsSortOption>
-                  <ProductsSortOption>High To Low</ProductsSortOption>
-                  <ProductsSortOption>New arrival</ProductsSortOption>
-                  <ProductsSortOption>Recommeded</ProductsSortOption>
-
-                </ProductsSort>
-             </ProductsSortContainer>
-             
-
-                
-            </ProductsSortLine>
+           
             
             {products ? <RenderProducts products={products} /> : <ProductListingError />}
   
