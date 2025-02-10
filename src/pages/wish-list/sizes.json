@@ -1,0 +1,52 @@
+[
+    
+    {
+      "size": "ss",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+     "size": "s",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+     "size": "m",
+      "colorCode": "485",
+      "contrast": "R"
+      
+    },
+    {
+     "size": "l",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    },
+    {
+     "size": "xl",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    },
+    {
+     "size": "xxl",
+      "colorCode": "485",
+      "contrast": "white",
+      "shouldShowContrast": true
+      
+    },
+    {
+      "size": "xxxl",
+       "colorCode": "485",
+       "contrast": "white",
+       "shouldShowContrast": true
+       
+     }
+    
+    
+ 
+  ]
