@@ -6,8 +6,15 @@ import { Link } from "wouter";
 import { BiSearch } from "react-icons/bi/index.js";
 import { BiX } from "react-icons/bi/index.js";
 import productsList from "./products.json"
+import colors from "./colors.json"
+import collections from "./collections.json"
+import brands from "./brands.json"
+import sizes from "./sizes.json"
+import appFilters from "./active-filters.json"
 import {images} from "Assets"
 import { BiSolidStar } from "react-icons/bi/index.js";
+import { BiCart, BiSolidHeart, BiHeart,BiCheck } from "react-icons/bi/index.js";
+
 
 const Products = styled("div")(() => {
   return {
@@ -177,14 +184,68 @@ const Results = styled("div")({
 });
 
 
-const ProductsTitle = styled("div")({
+const ProductsSortLine = styled("div")({
   display: "flex",
   flexDirection: "row",
-  marginTop: "50px",
+  marginTop: "20px",
+  justifyContent:"space-between",
+  alignItems: "center"
+
+});
+
+const ProductsSortContainer = styled("div")({
+  display: "flex",
+  flexDirection: "row",
   gap: "15px",
-  alignSelf: "center",
-  fontSize: "30px",
-  fontWeight: "bolder"
+  justifyContent: "end",
+  alignContent: "center",
+  alignItems: "center",
+  paddingRight: "2%",
+  flex: 1
+
+});
+
+const ProductsSortTitle = styled("p")({
+ 
+  display: "flex",
+  flexDirection: "column",
+  gap: 10,
+  flexWrap: "wrap",
+  paddingLeft: "2%",
+  flex: 1
+ 
+});
+
+const ProductsTitle = styled("h2")({
+ 
+  fontSize: "20px",
+  fontWeight: "bolder",
+ 
+  
+ 
+});
+
+
+const ProductsSort = styled("select")({
+  backgroundColor: "transparent",
+  border: "solid 1px green",
+  borderRadius: "8px",
+  padding: "4px",
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "center"
+
+});
+
+const ProductsSortText = styled("small")({
+  fontSize: "14px",
+  fontWeight: "bolder",
+
+});
+
+const ProductsSortOption = styled("option")({
+  fontSize: "14px",
+
 });
 
 const List = styled("ul")({
@@ -196,7 +257,8 @@ const List = styled("ul")({
   alignItems: "center",
   marginTop: 30,
   gap: 15,
-  justifyContent: "center"
+  justifyContent: "center",
+  flex: 3.5
 })
 
 const ListItem = styled("li")({
@@ -227,7 +289,8 @@ const ListLink = styled(Link)({
   alignItems: "center",
   gap: 20,
   textDecoration: "none",
-  color: "black"
+  color: "black",
+  width: "100%"
 })
 
 const ListImage = styled("img")({
@@ -263,6 +326,51 @@ const ListText = styled("p")({
   fontSize: "18px"
 })
 
+const ListProductName = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  fontSize: "20px",
+  fontWeight: "bolder" 
+})
+
+const ListProductPrice = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  fontSize: "18px",
+  color: "#e6910c", fontWeight: "bolder" 
+})
+
+const ListProductStatusContainer = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+ 
+  gap: 10
+  
+})
+
+const ListProductStatus = styled("p")({
+  margin: 0,
+  padding: 0,
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  borderBottom: "solid 2px #e8dbdb", 
+  paddingBottom: "10px",
+  
+})
 const ProductRating = styled("p")({
  
   display: "flex",
@@ -271,6 +379,427 @@ const ProductRating = styled("p")({
   alignItems: "center",
   gap: 20,
   justifyContent: "center"
+
+  
+})
+
+const ActionButtons = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+
+  justifyContent: "center",
+  width: "100%"
+})
+
+const ProductsCount = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+   flex: 2,
+  justifyContent: "center"
+})
+
+const ProductCart = styled("p")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 20,
+  justifyContent: "center",
+  flex: 4
+})
+
+const ProductsLike = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 20,
+  justifyContent: "center",
+  flex: 1
+})
+
+const AddRemoveButton = styled("button")({
+
+  gap: "10px",
+  backgroundColor: "rgb(0, 191, 165)",
+  width: "20px",
+  justifyContent: "center",
+  fontSize: "15px",
+  color: "white",
+  fontWeight: "bold",
+  height: "20px",
+  border: "none",
+  cursor: "pointer",
+  position: "relative",
+  alignSelf:"center",
+
+  display: "flex"
+  
+
+
+});
+
+const Count = styled("input")({
+
+
+  width: "20px",
+  backgroundColor: "#f2ebeb",
+  fontSize: "15px",
+  fontWeight: "bolder",
+  alignContent: "center",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+  border: "none",
+  cursor: "pointer",
+  position: "relative",
+  display: "flex"
+  
+
+
+});
+
+const AddCart = styled("button")({
+
+  backgroundColor: "wheat",
+  borderRadius: "10%",
+  width: "100%",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "10px",
+
+  border: "none",
+  cursor: "pointer",
+  position: "relative",
+  display: "flex",
+
+  
+
+
+});
+
+const SortCategories = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 20,
+ 
+  
+})
+
+const SortCategoryItem = styled(Link)({
+  fontSize: "13px",
+  fontWeight: "lighter",
+  fontStyle: "italic",
+  color: "black"
+  
+})
+
+const ProductsFilter = styled("div")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: 20,
+ 
+  
+})
+
+const Filter = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignSelf: "start",
+  marginTop: 50,
+  gap: 20,
+  flex:1
+ 
+  
+})
+
+const ColorFilter = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "start",
+  paddingLeft: "10%",
+  gap: 20,
+})
+const ColorFilterTitle = styled("p")({
+  fontSize: 14,
+  fontWeight: "bold"
+})
+const ColorFilterSwatches = styled("p")({
+  fontSize: 14,
+  fontWeight: "bold",
+  display: "flex", 
+  flexDirection: "row", 
+  gap: "10px" 
+})
+
+const ColorFilterSwatch = styled("p")((props)=>{
+
+  return {
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: "10px",
+  justifyContent: "center",
+  alignContent: "center",
+  justifyContent: "center",
+  width: 16,
+  height: 16,
+  borderRadius: "50%",
+  cursor: "pointer",
+  backgroundColor: props.color.color || "red",
+}
+
+  
+})
+
+const PriceFilter = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "start",
+  paddingLeft: "10%",
+  gap: 20,
+})
+const PriceFilterTitle = styled("p")({
+  fontPrice: 14,
+  fontWeight: "bold"
+})
+const PriceFilterSwatches = styled("p")({
+  
+  display: "flex", 
+  flexDirection: "row", 
+  flexWrap:"wrap",
+  gap: "10px" 
+})
+
+
+
+const PriceFilterSort = styled("select")({
+  backgroundColor: "transparent",
+  border: "solid 1px green",
+  borderRadius: "8px",
+  padding: "4px",
+  alignItems: "center",
+  display: "flex",
+  justifyContent: "center"
+
+});
+
+const PriceFilterSortOption = styled("option")({
+  fontSize: "12px",
+  fontWeight: "lighter"
+
+});
+
+const SizeFilter = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  alignItems: "start",
+  paddingLeft: "10%",
+  gap: 20,
+})
+const SizeFilterTitle = styled("p")({
+  fontSize: 14,
+  fontWeight: "bold"
+})
+const SizeFilterSwatches = styled("p")({
+  fontSize: 14,
+  fontWeight: "bold",
+  display: "flex", 
+  flexDirection: "row", 
+  flexWrap:"wrap",
+  gap: "10px" 
+})
+
+const SizeFilterSwatch = styled("p")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    alignItems: "center",
+    gap: "10px",
+    justifyContent: "center",
+    alignContent: "center",
+    width: "40px",
+    height: "40px",
+    borderRadius: "50%",
+    cursor: "pointer",
+    border: "solid 2px aliceblue",
+    position: "relative"
+  
+}
+
+  
+})
+
+const CollectionFilter = styled("div")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    alignItems: "start",
+    paddingLeft: "10%",
+    marginTop: 25,
+    gap: 15,
+}
+
+  
+})
+
+const CollectionFilterText = styled("p")((props)=>{
+
+  return {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: "10px",
+  justifyContent: "center",
+  alignContent: "center",
+  justifyContent: "center",
+  fontSize: 15,
+  fontWeight: "lighter",
+  cursor: "pointer"
+}
+
+  
+})
+
+const BrandsFilter = styled("div")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    alignItems: "start",
+    paddingLeft: "10%",
+    marginTop: 25,
+    gap: 15,
+}
+
+  
+})
+
+const BrandsFilterText = styled("p")((props)=>{
+
+  return {
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "wrap",
+  alignItems: "center",
+  gap: "10px",
+  justifyContent: "center",
+  alignContent: "center",
+  justifyContent: "center",
+  fontSize: 15,
+  fontWeight: "lighter",
+  cursor: "pointer"
+}
+
+  
+})
+
+const CheckBox = styled("button")((props)=>{
+
+  return {
+  display: "block",
+  position: "relative",
+  fontSize: 15,
+  width: 15,
+  height: 15,
+  cursor: "pointer",
+  backgroundColor: "transparent",
+  border: "solid 2px rgb(0, 191, 165)"
+}
+
+  
+})
+
+
+
+const ActiveFilters = styled("div")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    alignItems: "start",
+    marginTop: 30,
+    gap: 2,
+    flex: 1,
+}
+
+  
+})
+
+const ActiveFiltersWrapper = styled("div")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "start",
+    gap: 15,
+}
+
+  
+})
+
+const ActiveFilter = styled("section")((props)=>{
+
+  return {
+    display: "flex",
+    flexDirection: "column",
+    flexWrap: "wrap",
+    alignItems: "start",
+    marginTop: 25,
+    gap: 5,
+}
+
+  
+})
+
+const ActiveTitle = styled("p")((props)=>{
+
+  return {
+    fontSize: 15,
+    fontWeight: "lighter"
+
+}
+
+  
+})
+
+const ActiveDetail = styled("p")((props)=>{
+
+  return {
+    display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  fontSize: "14px",
+  backgroundColor: "black",
+  color: "white",
+  padding: "5px",
+  alignContent: "center",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "10px",
+  fontStyle: "italic"
+  }
 
   
 })
@@ -291,10 +820,55 @@ const renderProducts = (productItems)=>{
                {product.rating}
              </small>
           </ProductRating>
-           <ListText>{product.name}</ListText>
-           <ListText>{product.currency} {product.price}</ListText>
-           <ListText>Available: {product.count}</ListText>
-           <ListText>Status: {product.status}</ListText>
+           <ListProductName>{product.name}</ListProductName>
+           <ListProductPrice>{product.currency} {product.price}</ListProductPrice>
+           <ListProductStatusContainer>
+            <ListProductStatus>
+              <small style={{fontSize: "20px", fontWeight: "bolder" }}>
+              {product.count}
+              </small>
+              <small style={{fontSize: "14px", fontWeight: "lighter"}}>
+                Available
+              </small>
+              
+              </ListProductStatus>
+
+              {/* <ListProductStatus>
+              <small style={{fontSize: "20px", fontWeight: "bolder" }}>
+              {product.status}
+              </small>
+              <small style={{fontSize: "14px", fontWeight: "lighter"}}>
+                Stock Status
+              </small>
+              
+              </ListProductStatus> */}
+           </ListProductStatusContainer>
+
+           <ActionButtons>
+             <ProductsCount>
+               
+               <AddRemoveButton>
+                  -
+               </AddRemoveButton>
+               <Count placeholder="1" />
+                
+
+               <AddRemoveButton>
+                  +
+               </AddRemoveButton>
+
+             </ProductsCount>
+             <ProductCart>
+                <AddCart >
+                  Add to cart
+                </AddCart>
+             </ProductCart>
+             <ProductsLike>
+             <BiHeart style={{color: "green", fontSize: 17}} />
+             </ProductsLike>
+           </ActionButtons>
+          
+           
          </ListLink>
       </ListItem>
    })
@@ -304,9 +878,179 @@ const renderProducts = (productItems)=>{
 const RenderProducts = (props)=>{
 
   return (
+     <ProductsFilter>
+      <Filter>
+        <ColorFilter>
+        <ColorFilterTitle>Pick Color</ColorFilterTitle>
+        <ColorFilterSwatches>
+
+        {colors.map((color,i)=>{
+            return (
+              <ColorFilterSwatch color={color}>
+                {i === 0 
+                ? <BiCheck style={{color: color.shouldShowContrast ? color.contrast : ""}} />
+                : null
+              } 
+              </ColorFilterSwatch>
+            )
+        })}
+        
+        </ColorFilterSwatches>
+        </ColorFilter>
+       
+        <CollectionFilter>
+        <ColorFilterTitle>Collections</ColorFilterTitle>
+
+        {collections.map((collectionItem,i)=>{
+            return (
+              <CollectionFilterText>
+              <CheckBox>
+                 {i === 0 
+                   ? <BiCheck style={{
+                    position: "absolute",
+                    top: "-5px",
+                    left: "-3px",
+                    bottom: "15px",
+                    fontSize: "18px"
+                 }} />
+                   : null
+                 }
+                
+               </CheckBox>
+               <small>
+               { collectionItem.name
+              } 
+               </small>
+              </CollectionFilterText>
+            )
+        })}
+
+        
+        </CollectionFilter>
+
+        <PriceFilter>
+        <PriceFilterTitle>Price</PriceFilterTitle>
+        <PriceFilterSwatches>
+
+       
+              <PriceFilterSort>
+                <PriceFilterSortOption>
+                  Min Price
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  Any
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  85
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  150
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  250
+                </PriceFilterSortOption>
+              </PriceFilterSort>
+
+              <PriceFilterSort>
+                <PriceFilterSortOption>
+                  Max Price
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  Any
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  85
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  150
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  250
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  350
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  450
+                </PriceFilterSortOption>
+                <PriceFilterSortOption>
+                  1000
+                </PriceFilterSortOption>
+              </PriceFilterSort>
+             
+             
+        
+        </PriceFilterSwatches>
+        </PriceFilter>
+
+        <SizeFilter>
+        <SizeFilterTitle>Pick Size</SizeFilterTitle>
+        <SizeFilterSwatches>
+
+        {sizes.map((size,i)=>{
+            return (
+              <SizeFilterSwatch>
+
+                {size.size.toLowerCase() === "m"
+                ? <BiCheck  style={{
+                  position: "absolute",
+                  top: "-5px",
+                  left: "50%",
+                  color: "green",
+                  fontWeight: "bolder",
+                  fontSize: "18px"
+                   }}/>
+                :null
+                }
+                
+                {size.size.toUpperCase()
+              } 
+              </SizeFilterSwatch>
+            )
+        })}
+        
+        </SizeFilterSwatches>
+        </SizeFilter>
+
+
+        <BrandsFilter>
+        <ColorFilterTitle>Brands</ColorFilterTitle>
+
+        {brands.map((brandItem,i)=>{
+            return (
+              <BrandsFilterText>
+               <CheckBox>
+                 {i === 0 
+                   ? <BiCheck style={{
+                    position: "absolute",
+                    top: "-5px",
+                    left: "-3px",
+                    bottom: "15px",
+                    fontSize: "18px"
+                 }} />
+                   : null
+                 }
+                
+               </CheckBox>
+               <small>
+               { brandItem.name
+              } 
+               </small>
+              
+              </BrandsFilterText>
+            )
+        })}
+
+        
+        
+        
+        </BrandsFilter>
+      </Filter>
       <List>
         {renderProducts(props.products)}
       </List>
+     </ProductsFilter>
+      
   )
 }
 
@@ -345,6 +1089,7 @@ const OutOfStock = ()=>{
 const Shop = () => {
 
   const [products,setProducts] = useState(productsList)
+  console.log("THE ACTIVE FILTERS",appFilters)
    
   return (
     
@@ -354,9 +1099,65 @@ const Shop = () => {
 
 
           
-            <ProductsTitle>
-              Products
-            </ProductsTitle>
+            <ProductsSortLine>
+             <ProductsSortTitle>
+              <ProductsTitle>
+                Products ({products.length})
+              </ProductsTitle>
+              <SortCategories>
+                <SortCategoryItem href="/end-of-season">
+                  end of seaseon sale
+                </SortCategoryItem>
+                <SortCategoryItem href="/new-arrivals">
+                  new arrrivals
+                </SortCategoryItem>
+                <SortCategoryItem href="/priced-to-go">
+                  priced-to-go
+                </SortCategoryItem>
+              </SortCategories>
+             </ProductsSortTitle>
+
+             <ActiveFilters>
+             <ProductsTitle>
+                Active Filters
+              </ProductsTitle>
+               <ActiveFiltersWrapper>
+               {
+                 appFilters.map((filter)=>{
+                   console.log("ACTIVE FILTER", filter)
+                   return(
+                    <ActiveFilter>
+                    <ActiveTitle>
+                      {filter.title}
+                    </ActiveTitle>
+                    <ActiveDetail>
+                      {filter.value}
+                    </ActiveDetail>
+                  </ActiveFilter>
+                   )
+                 })
+               }
+               </ActiveFiltersWrapper>
+              
+             </ActiveFilters>
+             
+             <ProductsSortContainer>
+              <ProductsSortText>
+                  Sort by
+                </ProductsSortText>
+                <ProductsSort>
+                  <ProductsSortOption>Popular</ProductsSortOption>
+                  <ProductsSortOption>Low To High</ProductsSortOption>
+                  <ProductsSortOption>High To Low</ProductsSortOption>
+                  <ProductsSortOption>New arrival</ProductsSortOption>
+                  <ProductsSortOption>Recommeded</ProductsSortOption>
+
+                </ProductsSort>
+             </ProductsSortContainer>
+             
+
+                
+            </ProductsSortLine>
             
             {products ? <RenderProducts products={products} /> : <ProductListingError />}
   
